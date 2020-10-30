@@ -5,10 +5,8 @@
  */
 package lab3_karimguifarro_jorgevega;
 
-/**
- *
- * @author Karim Ozael
- */
+
 public class Locales {
+    
     
 }
