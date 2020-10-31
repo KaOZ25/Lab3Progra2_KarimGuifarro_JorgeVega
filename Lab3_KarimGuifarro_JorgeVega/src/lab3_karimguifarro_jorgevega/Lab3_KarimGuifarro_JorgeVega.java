@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 
 package lab3_karimguifarro_jorgevega;
+=======
+/*
+ Laboratorio 3: Ya Casi es BlackFriday en Cuarentena
+ */
+package Lab3_KarimGuifarro_JorgeVega;
+
+>>>>>>> 465830b3ea28f6da1d949090a0c3fa0958aae6d4
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -292,6 +300,7 @@ public class Lab3_KarimGuifarro_JorgeVega {
         for (int j = 0; j < contadorClientes; j++) {
             System.out.println((i++) + ". " + empleadosenlocales.toString());
         }
+<<<<<<< HEAD
     }
     
     public static Persona getPersonaEnLocal(int posicion){
@@ -306,6 +315,69 @@ public class Lab3_KarimGuifarro_JorgeVega {
         }
         
         return new Persona();
+=======
+    }
+    
+    public static Persona getPersonaEnLocal(int posicion){
+        
+        int i=1;
+        for (Registro registro : local) {
+            for (Persona habitante : registro.getHabitantes()) {
+                if (i==posicion) {
+                    return habitante;
+                }
+            }
+        }
+        
+        return new Persona();
+    }
+    
+    public static void crearPrueba(){
+    
+        System.out.print("Ingrese el nombre de la prueba: ");
+        String nombre = sc.nextLine();
+        
+        listarEmpleados(1);
+        System.out.print("Escoja al ranker evaluador de la prueba: ");
+        int nRanker = sc.nextInt();
+        sc.nextLine();
+        
+        while (nRanker<1 || nRanker>contadorEmpleados) {            
+            listarEmpleados(1);
+            System.out.print("Escoja un ranker válido: ");
+            nRanker = sc.nextInt();
+            sc.nextLine();
+        }
+        
+  
+        
+        boolean agregarPersonas = true;
+            
+        while (agregarPersonas){
+            listarClientes();
+                
+            System.out.print("Ingrese el indice de la persona a agregar a la tienda: ");
+            int index = sc.nextInt();
+                
+            while(index < 1 || index > contadorClientes){
+                System.out.print("El indice es incorrecto! Ingrese de nuevo: ");
+                index = sc.nextInt();
+            }
+                
+            System.out.print("Desea seguir agregando personas 1 = si Otro número = no: ");
+            int decision = sc.nextInt();
+                
+            if(decision != 1){
+                agregarPersonas = false;
+            }    
+        }
+        
+        
+        
+        boolean aprobada = respuesta==1;
+
+        
+>>>>>>> 465830b3ea28f6da1d949090a0c3fa0958aae6d4
     }
 
     public static void crearPiso(){
@@ -457,7 +529,11 @@ public class Lab3_KarimGuifarro_JorgeVega {
         }
     }
 
+<<<<<<< HEAD
     public static void modificarLocal() {
+=======
+    public static void modificarPiso() {
+>>>>>>> 465830b3ea28f6da1d949090a0c3fa0958aae6d4
         System.out.println("Modificar Local");
         System.out.println();
 
