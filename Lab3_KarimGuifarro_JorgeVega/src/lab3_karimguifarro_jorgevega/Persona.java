@@ -9,6 +9,9 @@ package lab3_karimguifarro_jorgevega;
  *
  * @author Karim Ozael
  */
-public class Personas {
+public class Persona {
+    private String tipo;
+    private String habitantes;
+    private String identificacion;
     
 }
