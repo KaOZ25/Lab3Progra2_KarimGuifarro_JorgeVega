@@ -69,7 +69,7 @@ public class Lab3_KarimGuifarro_JorgeVega {
                 for (int i=0; i<local.size();i++){
                     Registro piso = local.get(i);
 
-                    for(Persona p : piso.getHabitantes()){
+                    for(Persona p : piso.getEmpleados()){
 
                         if(p.getIdentificacion()==id){
                             signedInAsUser = true;
@@ -145,7 +145,7 @@ public class Lab3_KarimGuifarro_JorgeVega {
                 crearPiso();
                 break;
             case 8:
-                modificarPiso();
+                modificarLocal();
                 break;
             case 9:
                 break;
@@ -213,7 +213,7 @@ public class Lab3_KarimGuifarro_JorgeVega {
         
         for (int i=0; i<local.size(); i++) {
             
-            for (Persona h : local.get(i).getHabitantes()) {
+            for (Persona h : local.get(i).getEmpleados()) {
                 //Conseguimos el id de cada persona de cada piso de la torre
                 int identificacion = h.getIdentificacion();
                 //Lo comparamos con el nuevo id
@@ -278,7 +278,7 @@ public class Lab3_KarimGuifarro_JorgeVega {
         int i=1;
         System.out.println("REGISTRO\n");
         for (Registro registro : local) {
-            for (Persona habitante : registro.getHabitantes()) {
+            for (Persona habitante : registro.getEmpleados()) {
                 System.out.println((i++) + ". " + habitante.toString());
             }
         }
@@ -307,7 +307,7 @@ public class Lab3_KarimGuifarro_JorgeVega {
         
         int i=1;
         for (Registro registro : local) {
-            for (Persona habitante : registro.getHabitantes()) {
+            for (Persona habitante : registro.getEmpleados()) {
                 if (i==posicion) {
                     return habitante;
                 }
@@ -322,7 +322,7 @@ public class Lab3_KarimGuifarro_JorgeVega {
         
         int i=1;
         for (Registro registro : local) {
-            for (Persona habitante : registro.getHabitantes()) {
+            for (Persona habitante : registro.getEmpleados()) {
                 if (i==posicion) {
                     return habitante;
                 }
@@ -415,8 +415,8 @@ public class Lab3_KarimGuifarro_JorgeVega {
                 indice = sc.nextInt();
             }
                 
-            Ranker n =(Ranker)empleadosenlocales.get(contadorClientes + indice - 1);
-            local.get(contadorLocales).getEvaluadores().add(n);
+            Empleado n =(Empleado)empleadosenlocales.get(contadorClientes + indice - 1);
+            local.get(contadorLocales).getGerentes().add(n);
             
             System.out.print("Desea seguir agregando gerentes 1= si Otro número= no: ");
             int c = sc.nextInt();
@@ -452,7 +452,7 @@ public class Lab3_KarimGuifarro_JorgeVega {
                 index = sc.nextInt();
             }
                 
-            local.get(contadorLocales).getHabitantes().add(empleadosenlocales.get(index-1));
+            local.get(contadorLocales).getEmpleados().add(empleadosenlocales.get(index-1));
                 
             System.out.print("Desea seguir agregando personas 1 = si Otro número = no: ");
             int decision = sc.nextInt();
@@ -532,9 +532,10 @@ public class Lab3_KarimGuifarro_JorgeVega {
 <<<<<<< HEAD
     public static void modificarLocal() {
 =======
-    public static void modificarPiso() {
+    public static void modificarLocal() {
 >>>>>>> 465830b3ea28f6da1d949090a0c3fa0958aae6d4
         System.out.println("Modificar Local");
+       
         System.out.println();
 
         System.out.println("Lista de Locales");
@@ -597,20 +598,20 @@ public class Lab3_KarimGuifarro_JorgeVega {
                         break;
 
                     case 2:
-                        for (Persona p : local.get(indice).getEvaluadores()) {
-                            System.out.println(local.get(indice).getEvaluadores().indexOf(p) + ". " + p);
+                        for (Persona p : local.get(indice).getGerente()) {
+                            System.out.println(local.get(indice).getGerente().indexOf(p) + ". " + p);
                         }
                         System.out.println();
 
                         System.out.println("Ingrese el indice del empleado a eliminar");
                         int num = sc.nextInt();
 
-                        while (num > local.get(indice).getEvaluadores().size() - 1 || num < 0) {
+                        while (num > local.get(indice).getGerente().size() - 1 || num < 0) {
                             System.out.println("El indice ingresado es incorrecto!");
                             num = sc.nextInt();
                         }
 
-                        local.get(indice).getEvaluadores().remove(num);
+                        local.get(indice).getGerente().remove(num);
 
                         System.out.println("El evaluador ha sido eliminado de la lista");
                         System.out.println();
@@ -632,8 +633,8 @@ public class Lab3_KarimGuifarro_JorgeVega {
                     int limit = empleadosenlocales.size() - 1;
                     int ale = 0 + r.nextInt(limit);
 
-                    if (empleadosenlocales.get(ale) instanceof Ranker) {
-                        local.get(contadorLocales).setDirector((Ranker) empleadosenlocales.get(ale));
+                    if (empleadosenlocales.get(ale) instanceof Empleado) {
+                        local.get(contadorLocales).setDirector((Empleado) empleadosenlocales.get(ale));
                         hayDirector = true;
                     }
                 }
@@ -659,16 +660,16 @@ public class Lab3_KarimGuifarro_JorgeVega {
                         incorrecto = false;
                     }else{
                         System.out.println("Ingrese un tipo correcto");
-                        nivel = sc.nextInt();
+                        tipo = sc.nextInt();
                         
-                        while(nivel > 134 || nivel < 0){
+                        while(tipo > 134 || tipo < 0){
                             System.out.println("Ingrese un tipo correcto!");
                             nivel = sc.nextInt();
                         }
                     }
                 }
 
-                local.get(indice).setNivel(nivel);
+                local.get(indice).setTipo(tipo);
 
                 System.out.println("El tipo del Local se modifico correctamente");
                 System.out.println();
@@ -702,7 +703,7 @@ public class Lab3_KarimGuifarro_JorgeVega {
                             e = sc.nextInt();
                         }
 
-                        local.get(indice).getHabitantes().add(empleadosenlocales.get(e));
+                        local.get(indice).getEmpleados().add(empleadosenlocales.get(e));
 
                         System.out.println("Se agrego un nuevo empleado a la lista");
                         System.out.println();
@@ -712,20 +713,20 @@ public class Lab3_KarimGuifarro_JorgeVega {
                         System.out.println("Eliminar empleado");
                         System.out.println();
 
-                        for (Persona p : local.get(indice).getHabitantes()) {
-                            System.out.println(local.get(indice).getHabitantes().indexOf(p) + ". " + p);
+                        for (Persona p : local.get(indice).getEmpleados()) {
+                            System.out.println(local.get(indice).getEmpleados().indexOf(p) + ". " + p);
                         }
                         System.out.println();
 
                         System.out.println("Ingrese el indice del empleado a eliminar: ");
                         int n = sc.nextInt();
 
-                        while (n > local.get(indice).getHabitantes().size() - 1 || n < 0) {
+                        while (n > local.get(indice).getEmpleados().size() - 1 || n < 0) {
                             System.out.println("El indice ingresado es incorrecto!");
                             n = sc.nextInt();
                         }
 
-                        local.get(n).getHabitantes().remove(n);
+                        local.get(n).getEmpleados().remove(n);
 
                         System.out.println("El empleado se ha eliminado del local");
                         System.out.println();
